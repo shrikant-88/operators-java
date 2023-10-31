@@ -1,0 +1,188 @@
+ArithmeticOperators
++++++++++++++++++++
+ => +,-,*,/,%
+
+/ and % -> possiblity of getting ArithmeticException when operated on integral arithmetic type,but not on floating type.
+
+/ => extracts the quotient and performs the operation.
+% => extracts the remainder and performs the operation.
+
+Nan(Not a Number) is a integral arithmetic(byte,short,int,long) there is no way to represent the undefined result, so it would throw
+an Exception called "ArithmeticException".
+But floating point arithmetic(double,float) there is a way to represent the undefined result, so the result would be "Nan".
+
+eg#1.
+System.out.println(0.0/0.0); //double/double -> double
+System.out.println(-0.0/0.0);//double/double -> double
+System.out.println(0/0);     //int/int -> int
+
+Output
+Nan
+Nan
+ArithmeticException : /by zero
+
+Note:
+ for any value of 'x' including NaN, the result will be false.
+
+//<, <=, >, >= , ==, !=
+System.out.println(10<Float.NaN);//false
+System.out.println(10<=Float.NaN);//false
+System.out.println(10>Float.NaN);//false
+System.out.println(10>=Float.NaN);//false
+System.out.println(10==Float.NaN);//false
+System.out.println(Float.NaN == Float.NaN);//false
+		
+System.out.println(10!=Float.NaN);//true
+System.out.println(Float.NaN != Float.NaN);//true
+
+++++++++++++++++++++++++++++++++++++++++
+'+' operator applied on Strings in Java
+++++++++++++++++++++++++++++++++++++++++
+
+'+' operator in java is refered as "Overloaded-Operator".
+'+' operator will perform addition if both the operands are of numeric type(byte,short,int,long,float,double)
+'+' operator will perform concatination, if one of the operand is of "String" type.
+
+
+eg#1.
+String name="sachin";
+int a= 10,b=20,c=30;
+
+//int + String => concatination(joining String)
+System.out.println(a+b+c+name);//60sachin
+
+System.out.println(name+a+b+c);//sachin102030
+System.out.println(a+b+name+c);//30sachin30
+System.out.println(a+name+b+c);//10sachin2030
+
+
+eg#2.
+String name="sachin";
+int a= 10,b=20,c=30;
+
+name = a+b+c;//CE:incompatible type
+System.out.println(name);
+
+eg#3.
+String name="sachin";
+int a= 10,b=20,c=30;
+
+name=name+a+b;
+c=a+b;
+
+c=a+b+name; //CE: incompatible
+System.out.println(a);
+System.out.println(b);
+System.out.println(c);
+
++++++++++++++++++++++++++++
+RelationalOperator in Java
+++++++++++++++++++++++++++
+ <,<=,>,>=
+
+=> We can apply relational operators only on primtive types except "boolean types".
+=> we cannot apply relational operators only reference types(on objects)
+=> Nesting of relational operator is not possible in java.
+
+eg#1.
+System.out.println(10>10.5);//false
+System.out.println('a'>10.5);//true
+System.out.println('z'>'a');//true
+System.out.println(true>false);//CE
+System.out.println("sachin">"kohli");//CE
+System.out.println(10<20<30);//CE
+System.out.println(10>20>30);//CE
+
+++++++++++++++++
+EqualityOperator
+++++++++++++++++
+ ==,!=
+=> We can apply equality operators on primitive types including boolean types
+
+eg#1.
+System.out.println(10  == 20);//false
+System.out.println('a' == 'b');//false
+System.out.println('a' == 97.0);//true
+System.out.println(false == false);//true
+
+
+=> we can apply equality operators on reference type also.
+
+eg#2.
+Thread t1= new Thread();
+Thread t2= new Thread();
+Thread t3= t1;
+System.out.println(t1==t2);//false
+System.out.println(t1==t3);//true
+
+
+Note::
+=> To use == operator on reference type, we need to check whether there exists a relationship b/w 2 operands.
+=> If relationship exists, it should be parent-child relationship, otherwise it would result in "CompileTimeError".
+
+eg#3.
+Thread t = new Thread();
+Object o = new Object(); 
+String s = new String("sachin");
+StringBuffer sb =new StringBuffer("dhoni");
+
+System.out.println(t==o);//false
+System.out.println(o==s);//false
+System.out.println(s==t);//CE
+System.out.println(s==sb);//CE
+
+++++++++++++++++
+Bitwise Operator
+++++++++++++++++
+1. & => If both the arguments are true, then only result in true.
+2. | => If atleast one argument is true, then result is true.
+3. ^ => If both arguments are of different type, then result in true.
+4. ~ => It is negation operator.
+
+&,|,^                     => These operators can be applied on boolean and even on integral types.
+~(bitwsise complement)    => This  operator can be applied on integral types, but not on boolean types.
+!(boolean complement)     => This operator can be applied only on boolean types, but not on integral types.
+
+eg#1.
+System.out.println(4&5);//4
+System.out.println(4|5);//5
+System.out.println(4^5);//1
+
+System.out.println(~4);
+System.out.println(~true);//CE
+
+System.out.println(!true);
+System.out.println(!4);//CE
+
+Note: 
+=> Negative no will be stored inside the computer using 2's complements.
+=> For a negative number MSB will be 1, where as for a positive number MSB will be 0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
